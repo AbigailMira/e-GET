@@ -15,7 +15,7 @@
 
 	$servername = "localhost";
 	$username = "root";
-	$password = "root";
+	$password = "yyyyy";
 	$database = "eget";
 
 
