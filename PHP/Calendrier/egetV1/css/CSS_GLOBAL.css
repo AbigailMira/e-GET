@@ -7,7 +7,6 @@
 #header {
 	height: 70px;
 	background-color: #A4A4A4;
-	color: rgba(255, 255, 255,0.5);
 	font-family: Arial;
 	border-bottom: 4px solid #54705F;
 	display: flex;
@@ -20,11 +19,7 @@
 	margin-top: 7px;
 	font-family: 'Mukta Mahee', sans-serif;
 	font-variant: small-caps;
-}
-#header p {
-	margin-top: 13px;
-	font-size: 1.5em;
-	font-family: 'Montserrat', sans-serif;
+	letter-spacing: 0.2em;
 }
 
 
@@ -34,14 +29,16 @@ ul.nav.nav-tabs{
 }
 #menu {
 	padding: 0;
-	width: 100%;
+	z-index: 1;
+}
+#menu1 {
+	background-color: blue;
 }
 #part1 li a{
 	font-size: 120%;
 	color: #54705F;
 	font-family: 'Mukta Mahee', sans-serif;
 }
-
 #part1 li a:hover{
 	background-color: #64AE82;
 	color: #fff;
@@ -53,6 +50,25 @@ ul.nav.nav-tabs{
 #part1 li a:visited{
 	background-color: #64AE82;
 }
+#profil {
+	margin: 0;
+	width: 250px;
+	position: absolute;
+	right: 0;
+	padding: 0;
+	padding-right: 20px;
+	background-color : #D8D8D8;
+	height: 46px;
+	text-align: right;
+	z-index: 2;
+}
+#profil p {
+	margin-top: 12px;
+	font-size: 1em;
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(46, 46, 46, 0.5);
+}
+
 
 
 /* Section principale */
@@ -62,6 +78,11 @@ ul.nav.nav-tabs{
 	padding: 10px;
 	padding-left: 30px;
 	font-family: 'Montserrat', sans-serif;
+	line-height: 25px;
+	color: #A75355;
+}
+aside li a {
+	text-decoration: none;
 	color: #A75355;
 }
 section {
@@ -82,17 +103,22 @@ hr {
 	width: 50%;
 	margin-left: 0;
 }
-
-/*calendar*/
-#calendar {
-    max-width: 800px;
-	max-height: 600px;
-    margin: 0;
+#formulaire {
+	line-height: 20px;
 }
+#etqt {
+	text-align: right;
+	padding-right: 5px;
+}
+
+
 /* Pied de page */
 #footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
 	background-color: #D8D8D8;
-	padding-top: 5px;
+	padding-top: 12px;
 	text-align: center;
 	color: #54705F;
 	border-top: 3px solid #54705F;
@@ -101,4 +127,34 @@ hr {
 #footer a {
 	text-decoration: none;
 	color: #54705F;
+}
+
+
+/* Responsive / media queries */
+
+@media screen and (max-width: 1024px){
+	#colonne {
+		padding-left: 15px;
+	}
+	#colonne h4 {
+		font-size: 1.1em;
+	}
+	#colonne li {
+		font-size: 0.9em;
+	}
+	section h3 {
+		font-size: 1.3em;
+	}
+	section h4 {
+		font-size: 1.1em;
+	}
+	section label {
+		font-size: 0.9em;
+	}
+}
+
+@media handheld, screen and (max-width: 750px) {
+	#profil {
+		visibility: hidden;
+	}
 }

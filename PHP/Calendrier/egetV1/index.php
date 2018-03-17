@@ -13,15 +13,15 @@
 		<script src='js/moment.min.js'></script>
 		<!--<script src='js/jquery.min.js'></script>-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> <!-- a retenir pour la version de jquery-->
-		
-		
-		
+
+
+
 		<script src='js/jquery-ui.min.js'></script>
 		<script src='js/bootstrap.min.js'></script>
 		<script src='js/fullcalendar.min.js'></script>
-		<script src='js/locale/fr.js'></script>	
-		
-		
+		<script src='js/locale/fr.js'></script>
+
+
 	</head>
 
 	<body>
@@ -31,40 +31,31 @@
 				<h1>e-Get</h1>
 				<p>Bienvenue +identifiant+</p>
 			</div>
-		
-		<!-- Menu du haut -->
-		<?php include('menu.html'); ?> 
 
-		
+		<!-- Menu du haut -->
+			<?php include('Includes/eg_menu.php'); ?>
+
+
 		<!-- Section principale : affichage de la grille -->
-			<div class="row">
-				<div id="colonne" class="col-lg-2">
-					<aside>
-						<h4>Options</h4>
-						<ul id="option">
-							<li><span class="glyphicon glyphicon-shopping-cart"></span> Panier</li><br>
-							<li><span class="glyphicon glyphicon-bell"></span> Alertes</li><br>
-						</ul>
-						<br>					
-					</aside>
-				</div>
+
+			<?php include('Includes/eg_asidenav.php'); ?>
 
 				<div id="grille"  class="col-lg-10">
-					
+
 				<div id='calendar'>
 				<style type="text/css">
 				.fc-time-grid .fc-slats td {
     			height: 0.7em;
-				}</style>					
+				}</style>
 				</div>
-					
+
 				</div>
-				<?php include('modalAjouterSeance.php'); ?> 
+				<?php include('modalAjouterSeance.php'); ?>
 				<?php include('modalMajSeance.php'); ?>
-				<?php include('Alerts.php'); ?>  
-				
-				
-				
+				<?php include('Alerts.php'); ?>
+
+
+
 			</div>
 		<a href="#top" class="to-top"><i class="glyphicon glyphicon-chevron-up"></i></a>
 		<style>
@@ -74,8 +65,8 @@
 				right:20px;
 				background:#000;
 				color:#fff;
-				
-				
+
+
 			}
 			.to-top:hover{
 				background:#d7d7d7;
@@ -83,7 +74,7 @@
 			}
 		</style>
 		<!-- Footer : mentions légales et crédits -->
-		<?php include('footer.html'); ?> 	
+		<?php include('Includes/footer.php'); ?>
 		</div>
 	<script>
 
@@ -102,21 +93,21 @@
 		defaultView:'agendaWeek',
 		height: 650,
 		contentHeight: 600,
-	     
+
 		header: {
 		left: 'prev,next today',
 		center: 'title',
 		right: 'month,agendaWeek,agendaDay'
 		},
 
-      
+
       editable: true,
       eventLimit: true, // allow "more" link when too many events
 	  events:"http://localhost/egetV1/seances.php",
 	  selectable: true,
 	 selectHelper: true,
 			select: function(start, end) {
-				
+
 				$('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
 				$('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
 				$('#ModalAdd').modal('show');
@@ -160,14 +151,14 @@
 					});
 	 }
 	 });
-	 
+
 	}
-      
+
     });
 
   });
 
-</script>	
+</script>
 
 	</body>
 </html>
