@@ -2,14 +2,12 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>e-Get - Nouvel enseignant</title>
+		<title>e-Get - Nouveau module</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../Style/e-Get_style-enseignant.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> <!-- a retenir pour la version de jquery-->
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
-		
-		
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>		
 	</head>
 	
 	<body>
@@ -17,21 +15,20 @@
 		<!-- Bandeau identification : logo + personne connectée -->
 			<div id="header" class="row">
 				<h1>e-Get</h1>
-				<p>Bienvenue +identifiant+</p>
 			</div>
 		
 		<!-- Menu du haut -->
 			<div class = "row" id = "part1">
-				<div id="menu" class = "col-lg-12 col-md-12 col-sm-12">
+				<div id="menu" class = "col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<ul class="nav nav-tabs">
 						<li><a data-toggle="tab" href="#menu0"><span class="glyphicon glyphicon-menu-hamburger"></span> Fichier</a></li>
-						<li><a data-toggle="tab" href="#menu1"><span class="glyphicon glyphicon-pencil"></span> Créer</a></li>
-						<li><a data-toggle="tab" href="#menu2"><span class="glyphicon glyphicon-edit"></span> Modifier</a></li>
+						<li><a data-toggle="tab" href="#menu1"><span class="glyphicon glyphicon-plus"></span> Créer</a></li>
+						<li><a data-toggle="tab" href="#menu2"><span class="glyphicon glyphicon-pencil"></span> Modifier</a></li>
 						<li><a data-toggle="tab" href="#menu3"><span class="glyphicon glyphicon-cog"></span> Gérer</a></li>
 						<li><a data-toggle="tab" href="#menu4"><span class="glyphicon glyphicon-book"></span> Aide</a></li>
 					</ul>
 					
-					<div class="tab-content">
+					<div class="tab-content" id="SousMenu">
 						<div id="menu0" class="tab-pane fade">
 							<nav class="navbar navbar-inverse">
 								<ul class="nav navbar-nav">
@@ -81,48 +78,75 @@
 								</ul>
 							</nav>
 						</div>
-					</div>
-					
+					</div>		
+				</div>
+
+				<div id="profil">
+					<p>Bienvenue +identifiant+</p>
 				</div>
 			</div>
+
 		
 		<!-- Section principale : affichage de la grille -->
 			<div class="row">
-				<div id="colonne" class="col-lg-3">
+				<div id="colonne" class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
 					<aside>
-						<h4>Options</h4>
+						<h4>Navigation</h4>
 						<ul id="option">
-							<li><span class="glyphicon glyphicon-shopping-cart"></span> Panier</li><br>
-							<li><span class="glyphicon glyphicon-bell"></span> Alertes</li><br>
+							<li><a href="#">Diplômes</a></li>
+							<li><a href="#">UE</a></li>
+							<li><a href="#">Modules</a></li>
 						</ul>
 						<br>					
 					</aside>
 				</div>
 				
-				<div id="grille" class="col-lg-9">
+				<div id="grille" class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
 					<section>
-						<h3>Création d'un nouvel enseignant</h3>
+						<h3>Ajouter un module</h3>
 						<hr>
 						<h4>Informations à remplir :</h4>
+						<hr>
 						<form>
-							<hr>
-							<label>Code enseignant :</label>&nbsp;&nbsp;<input type="text" name="Code_Enseignant"/><br><br>
-							<label>Nom :</label>&nbsp;&nbsp;<input type="text" name="Nom"/><br><br>
-							<label>Prénom :</label>&nbsp;&nbsp;<input type="text" name="Prenom"/><br><br>
-							<label>Statut :</label>&nbsp;&nbsp;<select name="Statut">
-								<option>Chargé de cours</option>
-								<option>Maître de conférence</option>
-								<option>Autre</option>
-							</select>
-							<hr><br>
-							<input type="submit" value="Enregistrer" class="btn btn-success btn-sm"/>&nbsp;<input type="submit" value="Annuler" class="btn btn-default btn-sm"/>
+							<div class="row" id="formulaire">
+								<div id="etqt" class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+									<label>Code module :</label><br><br>
+									<label>Intitulé :</label><br><br>
+									<label>Quota horaire :</label><br><br>
+									<label>EQTD :</label><br><br>
+									<label>UE rattachée :</label><br><br>
+									<label>Coefficient :</label><br><br>
+									<label>Descriptif :</label><br><br><br><br>
+									<label>Equipement :</label><br><br>
+								</div>
+								<div id="inprout" class="col-lg-10 col-md-9 col-sm-4 col-xs-4">
+									<input type="text" name="Code_module"/><br><br>
+									<input type="text" name="Intitule"/><br><br>
+									<input type="text" name="Quota"/><br><br>
+									<input type="text" name="EQTD"/><br><br>
+									<select name="UE_rattach">
+										<option>UE de la bdd</option>
+										<option>UE de la bdd</option>
+										<option>UE de la bdd</option>
+									</select><br><br>
+									<input type="text" name="Coef"/><br><br>
+									<textarea name="Description">Description du module...</textarea><br><br>
+									<select name="Equip()" multiple="multiple">
+										<option>Photoshop</option>
+										<option>Indesign</option>
+										<option>Illustrator</option>
+									</select>
+								</div>
+							</div>
 						</form>
+						<hr>
+						<input type="submit" value="Enregistrer 1" class="btn btn-success btn-sm"/>&nbsp;&nbsp;<input type="submit" value="Enregistrer 2" class="btn btn-primary btn-sm"/>&nbsp;&nbsp;<input type="submit" value="Annuler" class="btn btn-default btn-sm"/><br><br>
 					</section>
 				</div>
 			</div>
 			
 		<!-- Footer : mentions légales et crédits -->
-			<footer class="navbar-fixed-bottom">
+			<footer class="navbar">
 				<div id="footer" class="row">
 					<p><a href="#">Crédits</a> | <a href="#">Mentions Légales</a></p>
 				</div>
