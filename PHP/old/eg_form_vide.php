@@ -1,22 +1,14 @@
 <?php
- include("eg_header.php");
+ include("../../Includes/eg_header.php");
  $titre="TITRE";
 ?>
 
 <h1><?php echo $titre; ?></h1>
 
 		<!-- Section principale : affichage de la grille -->
-			<div class="row">
-				<div id="colonne" class="col-lg-3">
-					<aside>
-						<h4>Options</h4>
-						<ul id="option">
-							<li><span class="glyphicon glyphicon-shopping-cart"></span> Panier</li><br>
-							<li><span class="glyphicon glyphicon-bell"></span> Alertes</li><br>
-						</ul>
-						<br>
-					</aside>
-				</div>
+			<?php
+        include("../../Includes/eg_menu.php");
+      ?>
 
 				<div id="grille" class="col-lg-9">
 					<section>
@@ -24,7 +16,7 @@
 						<hr>
 						<h4>Informations à remplir :</h4>
 
-						<form action="eg_enregEns.php" method="post">
+						<form action="///.php" method="post">
 
 							<hr>
 							<!--retrait de la ligne code enseignant car il s'agit d'un auto-increment dans la base de données

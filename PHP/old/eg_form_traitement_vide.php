@@ -6,27 +6,10 @@
   <body>
     <div>
 <?php
+      <div>
+        include("../../Includes/eg_menu.php");
+      </div>
 
-  $servername = "///";
-  $username = "///";
-  $password = "///";
-  $database = "///";
-
-
-  $conn = mysqli_connect($servername, $username, $password, $database);
-/*on vérifie que c'est bien connecté*/
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-    }
-    echo "Connected successfully<br />";
-
-    $VAR=$_POST["VAR"];
-
-
-<p>"Vous avez saisi les informations suivante : <br>"
-    echo $VAR;"<br>"
-
-</p>
 
     $sql="insert into TABLE (COL, COL, COL) values ($VAR, $VAR, $VAR)";
 
