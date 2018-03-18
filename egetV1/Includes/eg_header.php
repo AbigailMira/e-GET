@@ -13,6 +13,8 @@
 
   <?php
 
+	include ("functions.php");
+
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";

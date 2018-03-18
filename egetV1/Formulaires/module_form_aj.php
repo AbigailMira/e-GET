@@ -15,7 +15,7 @@
 
 				<div id="grille" class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
 					<section>
-						<h3>Ajouter une unité d'enseignement</h3>
+						<h3>Ajouter un module</h3>
 						<hr>
 						<h4>Informations à remplir :</h4>
 						<hr>
@@ -25,10 +25,10 @@
 							<div class="row form-group eltForm">
 								<!--<></>Code-->
 								<div class = "col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-6  col-xs-6  eltG">
-									<label>Code U.E. : </label>
+									<label>Code module : </label>
 								</div>
 								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
-									<input class="form-control" type="text" name="CodeUE"/>
+									<input class="form-control" type="text" name="CodeModule"/>
 								</div>
 							</div>
 
@@ -38,7 +38,7 @@
 									<label>Intitulé : </label>
 								</div>
 								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
-									<input class="form-control" type="text" name="NomUE"/>
+									<input class="form-control" type="text" name="NomModule"/>
 								</div>
 							</div>
 
@@ -48,50 +48,41 @@
 									<label>Descriptif : </label>
 								</div>
 								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
-									<textarea class="form-control" rows = "6" type="text" name="DescUE"></textarea>
+									<textarea class="form-control" rows = "6" type="text" name="DescModule"></textarea>
 								</div>
 							</div>
 
-								<!--Diplome-->
+								<!--EQTD     modifs sur le input type cf BDD-->
 							<div class="row form-group eltForm">
 								<div class = "col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-6  col-xs-6  eltG">
-									<label>Diplôme : </label>
+									<label>Nombre d'heures : </label>
 								</div>
 								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
-									<!-- <input class="form-control" type="text" name="ectsUE"/> -->
-
-
-
-                  <?php
-                  /*on fait une requête simple qui ramène tous les BluName (noms) de Blush*/
-                  $result = $conn->query("SELECT Code_Diplome, Nom_diplome FROM Diplome");
-
-                  echo ("<SELECT name='code_diplome'>");
-
-                  /*on boucle sur toutes les lignes renvoyées*/
-                  while ($row = $result->fetch_assoc()){
-                          echo "<option value='" .$row['Code_Diplome'] . "'>" .$row["Nom_diplome"] . "</option>";
-                      }
-                      echo "</SELECT>";
-
-                  /*on ferme le résultat*/
-                  $result->close();
-
-
-
-
-
-                   ?>
+									<input class="form-control" type="number" name="heureModule"/>
 								</div>
 							</div>
 
-								<!--ECTS     modifs sur le input type cf BDD et input name-->
+								<!--Coefficient     modifs sur le input type cf BDD-->
 							<div class="row form-group eltForm">
 								<div class = "col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-6  col-xs-6  eltG">
-									<label>ECTS : </label>
+									<label>EQTD : </label>
 								</div>
 								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
-									<input class="form-control" type="number" name="ectsUE"/>
+									<input class="form-control" type="number" name="EQTD"/>
+								</div>
+							</div>
+
+								<!--Equipement requis-->
+							<div class="row form-group eltForm">
+								<div class = "col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-6  col-xs-6  eltG">
+									<label>Equipement requis : </label>
+								</div>
+								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
+									<label>
+										<input type="checkbox" name="Equip 1"> Equipement 1<br>
+										<input type="checkbox" name="Equip 2"> Equipement 2<br>
+										<input type="checkbox" name="Equip 3"> Equipement 3<br>
+									</label>
 								</div>
 							</div>
 

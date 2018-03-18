@@ -21,15 +21,15 @@
 						<hr>
 						<form action="eg_traitement_aj.php" method="post">
 							<div class="row form-group eltForm">
-								<!--<></>Code-->
+								<!--<></>Code     modifs sur le input type cf BDD-->
 								<div class = "col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-6  col-xs-6  eltG">
 									<label>Code diplôme : </label>
 								</div>
 								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
-									<input class="form-control" type="text" name="CodeDiplome"/>
+									<input class="form-control" type="number" name="CodeDiplome"/>
 								</div>
 							</div>
-								
+
 								<!--Nom-->
 							<div class="row form-group eltForm">
 								<div class = "col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-6  col-xs-6  eltG">
@@ -38,18 +38,18 @@
 								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
 									<input class="form-control" type="text" name="NomDiplome"/>
 								</div>
-							</div>	
-							
-								<!--Année-->
+							</div>
+
+								<!--Année     modifs sur le input type cf BDD-->
 							<div class="row form-group eltForm">
 								<div class = "col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-6  col-xs-6  eltG">
 									<label>Année : </label>
 								</div>
 								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
-									<input class="form-control" type="text" name="AnnDiplome"/>
+									<input class="form-control" type="number" name="AnnDiplome"/>
 								</div>
-							</div>	
-							
+							</div>
+
 								<!--Responsable-->
 							<div class="row form-group eltForm">
 								<div class = "col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-6  col-xs-6  eltG">

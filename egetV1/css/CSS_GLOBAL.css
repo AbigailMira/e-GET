@@ -72,14 +72,15 @@ ul.nav.nav-tabs{
 
 
 /* Section principale */
-#colonne {
+#asideCont{
 	height: auto;
-	margin-top: 8px;
-	padding: 10px;
-	padding-left: 30px;
+	margin-top: 1%;
+	padding: 1.5%;
+	padding-left: 2%;
 	font-family: 'Montserrat', sans-serif;
-	line-height: 25px;
+	line-height: 200%;
 	color: #A75355;
+	border: 2px red solid;
 }
 aside li a {
 	text-decoration: none;
@@ -94,11 +95,36 @@ form {
 #option {
 	list-style: none;
 }
-#grille {
+
+
+
+
+#mainCont {
 	height: auto;
-	padding: 5px;
 	background-color: #fff;
+	margin-top: 1%;
+	padding: 1.5%;
+	padding-left: 2%;
+	font-family: 'Montserrat', sans-serif;
+	line-height: 200%;
+	color: #A75355;
+	border: 2px red solid;
 }
+
+
+.eltForm{
+	margin-bottom: 2%;
+}
+
+.eltR{
+	width: 30%;
+	border: 2px black dashed;
+	padding: 0;
+}
+
+
+
+
 hr {
 	width: 50%;
 	margin-left: 0;
@@ -131,8 +157,7 @@ hr {
 
 
 /* Responsive / media queries */
-
-@media screen and (max-width: 1024px){
+/*@media screen and (max-width: 1024px){
 	#colonne {
 		padding-left: 15px;
 	}
@@ -157,4 +182,4 @@ hr {
 	#profil {
 		visibility: hidden;
 	}
-}
+}*/
