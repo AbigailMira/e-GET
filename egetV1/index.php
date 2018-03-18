@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>e-Get - Aceuille</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="./Style/e-Get_style-calendar.css">
+		<link rel="stylesheet" href="css/e-Get_style-calendar.css">
 		<!-- Bootstrap Core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<!-- fullcalendar CSS -->
