@@ -74,7 +74,7 @@
 			}
 		</style>
 		<!-- Footer : mentions légales et crédits -->
-		<?php include('Includes/footer.php'); ?>
+		<?php include('Includes/eg_footer.php'); ?>
 		</div>
 	<script>
 
