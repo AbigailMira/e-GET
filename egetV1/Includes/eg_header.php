@@ -15,21 +15,7 @@
 
 	include ("functions.php");
 
-	$servername = "localhost";
-	$username = "root";
-	$password = "root";
-	$database = "eget";
-
-
-	$conn = mysqli_connect($servername, $username, $password, $database);
-
- /*on vérifie que c'est bien connecté*/
-	if (!$conn) {
-			die("Connection failed: " . mysqli_connect_error());
-	}
-	echo "Connected successfully<br />";
 	?>
-
 	<body>
 		<div class="container-fluid">
 		<!-- Bandeau identification : logo + personne connectée -->
