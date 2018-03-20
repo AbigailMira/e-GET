@@ -2,6 +2,37 @@
 @import url('https://fonts.googleapis.com/css?family=Mukta+Mahee');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+/*Login*/
+header.row.head{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px red solid;
+}
+
+#milieu{
+	border: 2px red solid;
+	margin-top: 5%;
+}
+
+#check{
+	margin-left: 25%;
+}
+
+button.btn.btn-warning{
+	margin-left: 63%;
+	background-color: #54705F;
+	border : 1px #54705F solid;
+}
+
+
+
+
+
+
+
+
+
 
 /* Bandeau identification */
 #header {
@@ -80,7 +111,7 @@ ul.nav.nav-tabs{
 	font-family: 'Montserrat', sans-serif;
 	line-height: 200%;
 	color: #A75355;
-	border: 2px red solid;
+	/*border: 2px red solid;*/
 }
 aside li a {
 	text-decoration: none;
@@ -96,9 +127,12 @@ form {
 	list-style: none;
 }
 
+/*Diplômes*/
 
 
 
+
+/*Formulaires*/
 #mainCont {
 	height: auto;
 	background-color: #fff;
@@ -108,9 +142,8 @@ form {
 	font-family: 'Montserrat', sans-serif;
 	line-height: 200%;
 	color: #A75355;
-	border: 2px red solid;
+	/*border: 2px red solid;*/
 }
-
 
 .eltForm{
 	margin-bottom: 2%;
@@ -118,10 +151,9 @@ form {
 
 .eltR{
 	width: 30%;
-	border: 2px black dashed;
+	/*border: 2px black dashed;*/
 	padding: 0;
 }
-
 
 
 
@@ -129,6 +161,7 @@ hr {
 	width: 50%;
 	margin-left: 0;
 }
+
 #formulaire {
 	line-height: 20px;
 }
