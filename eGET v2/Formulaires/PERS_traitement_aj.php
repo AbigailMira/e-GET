@@ -1,5 +1,5 @@
 <?php
- include("../eg_header.php");
+ include("../Includes/eg_header.php");
  $titre="Enregistrement enseignant";
 
 include("../Includes/eg_menu.php");
@@ -37,5 +37,5 @@ echo "</p>";
 <!-- Footer : mentions légales et crédits -->
 
 <?php
-include("../eg_footer.php");
+include("../Includes/eg_footer.php");
 ?>

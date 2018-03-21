@@ -1,5 +1,5 @@
 <?php
- include("../eg_header.php");
+ include("../Includes/eg_header.php");
  $titre="Enregistrement enseignant";
 
 include("../Includes/eg_menu.php");
@@ -11,9 +11,10 @@ include("../Includes/eg_asidenav.php")
     <div>
 <?php
 
-    $nom=$_POST["Nom"];
-    $prenom=$_POST["Prenom"];
-    $statut=$_POST["Statut"];
+    $codediplome=$_POST["CodeDiplome"];
+    $nomdiplome=$_POST["NomDiplome"];
+    $annee=$_POST["Annee"];
+    $responsable=$_POST[""]
 
 echo "<p>Vous avez saisi les informations suivante : <br>";
     echo $nom."<br>";
@@ -37,5 +38,5 @@ echo "</p>";
 <!-- Footer : mentions légales et crédits -->
 
 <?php
-include("../eg_footer.php");
+include("../Includes/eg_footer.php");
 ?>
