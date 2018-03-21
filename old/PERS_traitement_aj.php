@@ -15,20 +15,13 @@ include("../Includes/eg_asidenav.php")
     $prenom=$_POST["Prenom"];
     $statut=$_POST["Statut"];
 
-    echo "<p>Vous avez saisi les informations suivante : <br>";
+echo "<p>Vous avez saisi les informations suivante : <br>";
     echo $nom."<br>";
     echo $prenom."<br>";
     echo $statut."<br>";
-    echo "</p>";
+echo "</p>";
 
-    /* Voyons si c'est une création ou une modif, et changeons la requête en fonction */
-    if ($_POST["action"] === "creation") {
-      /* creation : on insère */
-      $sql="insert into Enseignant (Nom, Prenom, Statut) values ('$nom', '$prenom', '$statut')";
-    } else {
-      /* modification: on update where CodeDiplome=$codediplome. */
-      $sql="update Enseignant set Nom='$nom', Prenom='$prenom', Statut='$statut' where idEnseignant='$idEnseignant'";
-    }
+    $sql="insert into Enseignant (nom, prenom, statut) values ('$nom', '$prenom', '$statut')";
 
     if ($conn->query($sql) === true){
       echo "Enregistrement réussi";
