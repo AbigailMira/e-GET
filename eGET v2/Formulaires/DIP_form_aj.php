@@ -18,18 +18,18 @@
 						<h3>Ajouter un diplôme</h3>
 						<hr>
 
-						<form class="form-horizontal" action="eg_traitement_aj.php" method="post">
+						<form class="form-horizontal" action="DIP_traitement_aj.php" method="post">
 							<!--<div class="row" id="formulaire">    ANNULE-->
 
-							<div class="row form-group eltForm">
-								<!--<></>Code-->
+							<!--<div class="row form-group eltForm">
+
 								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
 									<label class="control-label">Code diplôme : </label>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
 									<input class="form-control" type="text" name="CodeDiplome"/>
 								</div>
-							</div>
+							</div>-->
 
 								<!--Nom-->
 							<div class="row form-group eltForm">
@@ -41,7 +41,7 @@
 								</div>
 							</div>
 
-								<!--Année-->
+								<!--Année
 							<div class="row form-group eltForm">
 								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
 									<label class="control-label">Année : </label>
@@ -49,7 +49,7 @@
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
 									<input class="form-control" type="number" name="Annee"/>
 								</div>
-							</div>
+							</div>-->
 
 								<!--Responsable-->
 							<div class="row form-group eltForm">

@@ -19,7 +19,7 @@
 						<hr>
 						<h4>Informations à remplir :</h4>
 						<hr>
-						<form action="eg_traitement_aj.php" method="post">
+						<form action="UE_traitement_aj.php" method="post">
 							<!--<div class="row" id="formulaire">    ANNULE-->
 
 							<div class="row form-group eltForm">
@@ -75,15 +75,15 @@
 									<input class="form-control" type="number" name="ectsUE"/>
 								</div>
 							</div>
-
+              <hr>
+              <input type="submit" value="Ajouter" class="btn btn-success btn-sm"/>&nbsp;
+              <input type="submit" value="Annuler" class="btn btn-default btn-sm"/><br><br>
 							<!--</div>ANNULE-->
 						</form>
-						<hr>
-						<input type="submit" value="Ajouter" class="btn btn-success btn-sm"/>&nbsp;
-						<input type="submit" value="Annuler" class="btn btn-default btn-sm"/><br><br>
+
 					</section>
 				</div>
 			</div>
 
 		<!-- Footer : mentions légales et crédits -->
-			<?php include("eg_footer.php") ?>
+			<?php include("../Includes/eg_footer.php") ?>

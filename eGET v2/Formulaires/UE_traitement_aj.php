@@ -12,19 +12,23 @@ include("../Includes/eg_asidenav.php")
 <?php
 
     //$codediplome=$_POST["CodeDiplome"]; Auto-increment
-    $nomdiplome=$_POST["NomDiplome"];
-    //$annee=$_POST["Annee"];
-    $responsable=$_POST["idEnseignant"];
+    $codeUE=$_POST["CodeUE"];
+    $nomUE=$_POST["NomUE"];
+    $descUE=$_POST["DescUE"];
+    $ects=$_POST["ectsUE"];
+    $diplome=$_POST["code_diplome"];
 
 echo "<p>Vous avez saisi les informations suivante : <br>";
     //echo $codediplome."<br>";
-    echo $nomdiplome."<br>";
-    //echo $annee."<br>";
-    echo $responsable."<br>";
+    echo $codeUE."<br>";
+    echo $nomUE."<br>";
+    echo $descUE."<br>";
+    echo $ects."<br>";
+    echo $diplome."<br>";
     echo "</p>";
 
-    $sql="insert into Diplome (Nom_Diplome, Enseignant_idEnseignant)
-    values ('$nomdiplome', '$responsable')";
+    $sql="insert into UE (Code_UE, Intitule, Descriptif, ECTS, Diplome_Code_Diplome)
+    values ('$codeUE', '$nomUE', '$descUE', '$ects', '$diplome')";
 
     if ($conn->query($sql) === true){
       echo "Enregistrement réussi";
@@ -34,7 +38,7 @@ echo "<p>Vous avez saisi les informations suivante : <br>";
 }
   ?>
 
-    <p><a href="DIP_form_aj.php">Retour</a>
+    <p><a href="UE_form_aj.php">Retour</a>
   </div>
 
 <!-- Footer : mentions légales et crédits -->
