@@ -33,7 +33,6 @@
 									<li><a href="#">Calendrier</a></li>
 									<li><a href="#">Salles</a></li>
 									<li><a href="#">Enseignements</a></li>
-									<li><a href="#">Enseignements</a></li>
 									<li><a href="#">Personnels</a></li>
 									<li><a href="#">Étudiants</a></li>
 								</ul>
