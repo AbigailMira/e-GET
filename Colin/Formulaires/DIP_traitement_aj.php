@@ -14,24 +14,23 @@ include("../Includes/eg_asidenav.php")
     $codediplome=$_POST["CodeDiplome"];
     $nomdiplome=$_POST["NomDiplome"];
     $annee=$_POST["Annee"];
-    $responsable=$_POST["idEnseignant"];
+    $responsable=$_POST["idEnseignant"]
 
 echo "<p>Vous avez saisi les informations suivante : <br>";
-    echo $codediplome."<br>";
-    echo $nomdiplome."<br>";
-    echo $annee."<br>";
-    echo $responsable."<br>";
+    echo $nom."<br>";
+    echo $prenom."<br>";
+    echo $statut."<br>";
 echo "</p>";
 
     /* Voyons si c'est une création ou une modif, et changeons la requête en fonction */
-    if ($_POST["action"] === "creation") {
+    if ($_POST["action"] == "creation") {
       /* creation : on insère */
-      $sql="insert into Diplome (Code_Diplome, Nom_Diplome, Annee, Enseignant_idEnseignant) values ('$codediplome', '$nomdiplome', '$annee', $responsable)";
+      $sql="insert into Diplome (CodeDiplome, NomDiplome, Annee, Enseignant_idEnseignant) values ('$codediplome', '$nomdiplome', '$annee', $responsable)";
     } else {
       /* modification: on update where CodeDiplome=$codediplome. */
-      $sql="update Diplome set Nom_Diplome='$nomdiplome', Annee='$annee', Enseignant_idEnseignant=$responsable where Code_Diplome='$codediplome'";
+      $sql="update Diplome set NomDiplome='$nomdiplome', Annee='$annee', Enseignant_idEnseignant=$responsable where CodeDiplome='$codediplome'";
     }
-
+    
     if ($conn->query($sql) === true){
       echo "Enregistrement réussi";
     }

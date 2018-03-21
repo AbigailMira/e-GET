@@ -4,16 +4,16 @@
 $isModif = false;
 
 /* on regarde si on a un CodeDiplome en paramètre. Si oui, c'est pour une modif */
-if (isset($_GET["CodeDiplome"])) {
+if (isset($_GET["CodeDiplome"]) {
     /* dans ce cas, on le récupère */
     $codeDiplome = $_GET["CodeDiplome"];
 
-    $result = $conn->query("SELECT Code_Diplome, Nom_Diplome, Annee, Enseignant_idEnseignant FROM Diplome WHERE Code_Diplome='$codeDiplome'");
+    $result = $conn->query("SELECT CodeDiplome, NomDiplome, Annee, Enseignant_idEnseignant FROM Diplome WHERE CodeDiplome='$codeDiplome'");
 
     if ($row = $result->fetch_assoc()) {
         /* on l'a récupéré. On met les valeurs dans des variables */
-        $codeDiplomeModif = $row["Code_Diplome"];
-        $nomDiplomeModif = $row["Nom_Diplome"];
+        $codeDiplomeModif = $row["CodeDiplome"];
+        $nomDiplomeModif = $row["NomDiplome"];
         $anneeModif = $row["Annee"];
         $idEnseignantModif = $row["Enseignant_idEnseignant"];
 
@@ -42,15 +42,15 @@ if (isset($_GET["CodeDiplome"])) {
 					<section>
             <?php
                 /* on met le titre en fonction de création ou modification */
-                if ($isModif == false) {
+                if ($isModif == true) {
                     echo "<h3>Ajouter un diplôme</h3>";
                 } else {
-                    echo "<h3>Modifier le diplôme $nomDiplomeModif</h3>";
+                    echo "<h3>Modifier le diplôme $codeDiplomeModif</h3>";
                 }
             ?>
 						<hr>
 
-						<form class="form-horizontal" action="DIP_traitement_aj.php" method="post">
+						<form class="form-horizontal" action="eg_traitement_aj.php" method="post">
 							<!--<div class="row" id="formulaire">    ANNULE-->
 
               <?php
@@ -72,6 +72,27 @@ if (isset($_GET["CodeDiplome"])) {
               <!-- On met aussi un autre champ caché pour dire au php d'enregistrement qu'il
                    s'agit d'une modif -->
               <input type="hidden" name="action" value="modif"/>
+
+              <?php
+                      /* Fin du cas modif. On met le else et on entre dans le cas création */
+                  } else {
+                      /* Pareil que plus haut, le code HTML suivant et jusqu'à la clôture du else
+                       * dans le prochain bloc PHP sera affiché si $isModif == false.
+                       */
+              ?>
+
+							<div class="row form-group eltForm">
+								<!--<></>Code-->
+								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
+									<label class="control-label">Code diplôme : </label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
+									<input class="form-control" type="text" name="CodeDiplome"/>
+                  <!-- Dans le cas création aussi, on met le champ caché "action" pour dire au
+                       php d'enregistrement que c'est une création -->
+                  <input type="hidden" name="action" value="creation"/>
+								</div>
+							</div>
 
               <?php
                       /* Fin du cas création. */

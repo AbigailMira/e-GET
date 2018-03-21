@@ -27,7 +27,15 @@ echo "<p>Vous avez saisi les informations suivante : <br>";
 
     $sql="insert into Salle (Nom_salle, Capacite, Rattachement)
     values ('$numsalle', '$capsalle', '$ratta')";
-    "insert into Dispose de (Salle_Num_salle, Equipement_idEquipement)
+
+    if ($conn->query($sql) === true){
+      echo "Enregistrement réussi";
+    }
+    else {
+      echo "Erreur d'enregistrement".$conn->error;
+    }
+
+    $sql="insert into Dispose de (Salle_Num_salle, Equipement_idEquipement)
     values ('$numsalle', '')";
 
     if ($conn->query($sql) === true){
@@ -35,7 +43,8 @@ echo "<p>Vous avez saisi les informations suivante : <br>";
     }
     else {
       echo "Erreur d'enregistrement".$conn->error;
-}
+    }
+
   ?>
 
     <p><a href="UE_form_aj.php">Retour</a>
