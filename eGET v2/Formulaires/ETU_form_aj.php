@@ -133,7 +133,7 @@ if (isset($_GET["Code_groupe"])) {
                    * deux paramètres optionnels précédent avec leur valeur par défaut, "".
                    * La fonction afficheselect() évolue pour gérer ce cas.
                    */
-                  afficheselect($conn, "UE", "Code_UE[]", "Code_UE", "Code_UE", "", "", $UEs, true);
+                  afficheselect($conn, "UE", "Code_UE[]", "Code_UE", "CONCAT (Intitule,' ',Descriptif)", "", "", $UEs, true);
                    ?>
 								</div>
 							</div>
