@@ -6,16 +6,16 @@ $isModif = false;
 /* on regarde si on a un CodeDiplome en paramètre. Si oui, c'est pour une modif */
 if (isset($_GET["CodeDiplome"])) {
     /* dans ce cas, on le récupère */
-    $codeDiplome = $_GET["CodeDiplome"];
+    $numSemCiv = $_GET["NumSemCiv"];
 
-    $result = $conn->query("SELECT Code_Diplome, Nom_Diplome, Annee, Enseignant_idEnseignant FROM Diplome WHERE Code_Diplome='$codeDiplome'");
+    $result = $conn->query("SELECT Num_Sem_civ, Num_Sem_sco, Annee, DateD FROM Semaine WHERE Num_Sem_civ='$numSemCiv'");
 
     if ($row = $result->fetch_assoc()) {
         /* on l'a récupéré. On met les valeurs dans des variables */
-        $codeDiplomeModif = $row["Code_Diplome"];
-        $nomDiplomeModif = $row["Nom_Diplome"];
+        $numSemCivModif = $row["Num_Sem_civ"];
+        $numSemScoModif = $row["Num_Sem_sco"];
         $anneeModif = $row["Annee"];
-        $idEnseignantModif = $row["Enseignant_idEnseignant"];
+        $dateDModif = $row["DateD"];
 
         /* et on note que c'est une modif */
         $isModif = true;
@@ -43,14 +43,14 @@ if (isset($_GET["CodeDiplome"])) {
             <?php
                 /* on met le titre en fonction de création ou modification */
                 if ($isModif == false) {
-                    echo "<h3>Ajouter un diplôme</h3>";
+                    echo "<h3>Paramétrer le calendrier </h3>";
                 } else {
-                    echo "<h3>Modifier le diplôme $nomDiplomeModif</h3>";
+                    echo "<h3>Modifier le paramétrage</h3>";
                 }
             ?>
 						<hr>
 
-						<form class="form-horizontal" action="DIP_traitement_aj.php" method="post">
+						<form class="form-horizontal" action="CAL_traitement_aj.php" method="post">
 							<!--<div class="row" id="formulaire">    ANNULE-->
 
               <?php
@@ -67,7 +67,7 @@ if (isset($_GET["CodeDiplome"])) {
               <!-- Ici on est dans le HTML affiché si $isModif == true -->
               <!-- On met le champ CodeDiplome en caché, avec en value, la valeur de la variable
                    récupérée dans la requête au début de la page -->
-              <input type="hidden" name="CodeDiplome" value="<?php echo $codeDiplomeModif; ?>"/>
+              <input type="hidden" name="NumSemCiv" value="<?php echo $numSemCivModif; ?>"/>
 
               <!-- On met aussi un autre champ caché pour dire au php d'enregistrement qu'il
                    s'agit d'une modif -->
@@ -79,16 +79,28 @@ if (isset($_GET["CodeDiplome"])) {
                   /* Le HTML qui suit sera toujours affiché car on n'est plus dans un bloc php conditionnel */
               ?>
 
+
+               <div class="row form-group eltForm">
+                 <div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
+                   <label class="control-label">Semaine civile : </label>
+                 </div>
+                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
+                   <?php
+                   afficheselect($conn, "Semaine", "NumSemCiv", "Num_Sem_civ", "Num_Sem_civ", "", "", "");
+                    ?>
+                 </div>
+               </div>
+
 								<!--Nom-->
 							<div class="row form-group eltForm">
 								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
-									<label class="control-label">Nom diplôme : </label>
+									<label class="control-label">Semaine scolaire : </label>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
                   <!-- Dans les autres champs on met les valeurs qu'on a potentiellement récupérées
                      dans le cas d'une modif. Dans le cas d'une création, elles seront vides. -->
 
-									<input class="form-control" type="text" name="NomDiplome" value="<?php echo $nomDiplomeModif; ?>"/>
+									<input class="form-control" type="text" name="NumSemSco" value="<?php echo $numSemScoModif; ?>"/>
 								</div>
 							</div>
 
@@ -105,20 +117,11 @@ if (isset($_GET["CodeDiplome"])) {
 								<!--Responsable-->
 							<div class="row form-group eltForm">
 								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
-									<label class="control-label">Responsable : </label>
+									<label class="control-label">Date (AAAA-MM-JJ) : </label>
 								</div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
-                  <?php
-
-                  /* Pour le menu déroulant (select), resélectionner l'option existante est plus complexe
-                   * dans le cas de l'édition : il faut passer la valeur actuelle à la fonction afficheselect
-                   * pour qu'elle puisse l'utiliser.
-                   * On ajoute donc un troisième paramètre optionnel à la fonction, et on renseigne les
-                   * deux paramètres optionnels précédent avec leur valeur par défaut, "".
-                   * La fonction afficheselect() évolue pour gérer ce cas.
-                   */
-                  afficheselect($conn, "Enseignant", "idEnseignant", "idEnseignant", "CONCAT (Nom,' ',Prenom)", "", "", $idEnseignantModif);
-                   ?>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
+									<input class="form-control" type="number" name="DateD" value="<?php echo $dateD; ?>"/>
+								</div>
 								</div>
 							</div>
 

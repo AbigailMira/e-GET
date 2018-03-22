@@ -11,25 +11,25 @@ include("../Includes/eg_asidenav.php")
     <div>
 <?php
 
-    $codediplome=$_POST["CodeDiplome"];
-    $nomdiplome=$_POST["NomDiplome"];
-    $annee=$_POST["Annee"];
-    $responsable=$_POST["idEnseignant"];
+    $numSemCiv = $row["Num_Sem_civ"];
+    $numSemSco = $row["Num_Sem_sco"];
+    $annee = $row["Annee"];
+    $dateD = $row["DateD"];
 
 echo "<p>Vous avez saisi les informations suivante : <br>";
-    echo $codediplome."<br>";
-    echo $nomdiplome."<br>";
+    echo $numSemCiv."<br>";
+    echo $numSemSco."<br>";
     echo $annee."<br>";
-    echo $responsable."<br>";
+    echo $dateD."<br>";
 echo "</p>";
 
     /* Voyons si c'est une création ou une modif, et changeons la requête en fonction */
     if ($_POST["action"] === "creation") {
       /* creation : on insère */
-      $sql="insert into Diplome (Code_Diplome, Nom_Diplome, Annee, Enseignant_idEnseignant) values ('$codediplome', '$nomdiplome', '$annee', $responsable)";
+      $sql="insert into Semaine (Num_Sem_sco, Annee, DateD) values ('$numSemSco', '$annee', $dateD)";
     } else {
       /* modification: on update where CodeDiplome=$codediplome. */
-      $sql="update Diplome set Nom_Diplome='$nomdiplome', Annee='$annee', Enseignant_idEnseignant=$responsable where Code_Diplome='$codediplome'";
+      $sql="update Semaine set Num_Sem_sco='$numSemSco', Annee='$annee', DateD=$dateD where Num_Sem_civ='$numSemCiv'";
     }
 
     if ($conn->query($sql) === true){
@@ -40,7 +40,7 @@ echo "</p>";
 }
   ?>
 
-    <p><a href="PERS_form_aj.php">Retour</a>
+    <p><a href="CAL_form_aj.php">Retour</a>
   </div>
 
 <!-- Footer : mentions légales et crédits -->
