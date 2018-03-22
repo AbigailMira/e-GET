@@ -36,7 +36,7 @@ if (isset($_GET["idModule"])) {
     $result = $conn->query("SELECT Equipement_idEquipement from Requiert WHERE Module_idModule='$idModule'");
 
 		$idEquipementsModif = array();
-    while ($row = $result->fetch_assoc()) {
+    if ($row = $result->fetch_assoc()) {
 				/* on met chaque équipement dans un array */
         array_push($idEquipementsModif, $row["Equipement_idEquipement"]);
     }
@@ -95,7 +95,6 @@ if (isset($_GET["idModule"])) {
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
 									<input class="form-control" type="text" name="idModule"/>
-                  <input type="hidden" name="action" value="creation"/>
 								</div>
 							</div>
 
@@ -109,7 +108,7 @@ if (isset($_GET["idModule"])) {
 									<label>Intitulé : </label>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
-									<input class="form-control" type="text" name="Intitule" value="<?php echo $intituleModif; ?>"/>
+									<input class="form-control" type="text" name="Intitule" value="<?php echo $intituleModule; ?>"/>
 								</div>
 							</div>
 
@@ -119,7 +118,7 @@ if (isset($_GET["idModule"])) {
 									<label>Descriptif : </label>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
-									<textarea class="form-control" rows = "6" type="text" name="Descriptif"><?php echo $descriptifModif; ?></textarea>
+									<textarea class="form-control" rows = "6" type="text" name="Descriptif"><?php echo $descriptifModule; ?></textarea>
 								</div>
 							</div>
 
@@ -180,10 +179,10 @@ if (isset($_GET["idModule"])) {
 							</div>
 
 							<!--</div>ANNULE-->
+						</form>
 						<hr>
 						<input type="submit" value="Enregistrer" class="btn btn-success btn-sm"/>&nbsp;
 						<input type="submit" value="Annuler" class="btn btn-default btn-sm"/>
-						</form>
 					</section>
 				</div>
 			</div>

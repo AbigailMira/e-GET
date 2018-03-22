@@ -21,19 +21,12 @@ if (!$conn) {
  * $display_col:  nom de la colonne (ou fonction MySQL) où récupérer les labels (affichés) des <option>
  * $WHERE:        paramètre optionnel permettant de limiter les valeurs retournées par la requête
  * $onchange:     paramètre optionnel permettant d'ajouter des paramètres au tag <select>, typiquement un handler JS onchange()
- * $option_sel:   paramètre optionnel permettant de présélectionner une <option>
- * $is_multi:     paramètre optionnel permettant de spécifier un select multiple
- 
- */
-function afficheselect($conn, $nom_table, $select_name, $value_col, $display_col, $WHERE="", $onchange="", $option_sel = "", $is_multi = false){
+ * $option_sel:   paramètre optionnel permettant de présélectionner une <option>*/
+function afficheselect($conn, $nom_table, $select_name, $value_col, $display_col, $WHERE="", $onchange="", $option_sel = ""){
 
 $result = $conn->query("SELECT $value_col, $display_col FROM $nom_table $WHERE");
 
-if ($is_multi) {
-  $multipleTag = "multiple";
-}
-
-echo ("<SELECT name='$select_name' id='$select_name' $onchange $multipleTag>");
+echo ("<SELECT name='$select_name' id='$select_name' $onchange>");
 echo "<option value=''>---</option>";
 
 /*on boucle sur toutes les lignes renvoyées*/
@@ -41,10 +34,7 @@ while ($row = $result->fetch_assoc()){
 
         /* Si on a un paramètre $option_sel, on compare la value actuelle à $option_sel pour
          * voir si c'est la ligne qu'on doit préselectionner */
-        if (is_array($option_sel) && in_array($row[$value_col], $option_sel)) {
-          /* cas options multiples */
-          $selectTag = "selected";
-        } else if ($option_sel != "" && $option_sel == $row[$value_col]) {
+        if ($option_sel != "" && $option_sel == $row[$value_col]) {
           /* c'est celle là : on met "selected" dans la variable $selectTag */
           $selectTag = "selected";
 
