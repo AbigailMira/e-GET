@@ -3,22 +3,19 @@
 /* Par défaut c'est une création */
 $isModif = false;
 
-/* init des variables, pour la création */
-$codeGroupeModif="";
-$effectifModif="";
-$UEs = array();
-
 /* on regarde si on a un CodeDiplome en paramètre. Si oui, c'est pour une modif */
-if (isset($_GET["Code_groupe"])) {
+if (isset($_GET["CodeDiplome"])) {
     /* dans ce cas, on le récupère */
-    $codeGroupe = $_GET["Code_groupe"];
+    $codeDiplome = $_GET["CodeDiplome"];
 
-    $result = $conn->query("SELECT Code_groupe, Effectif FROM Gr_etudiants WHERE Code_groupe='$codeGroupe'");
+    $result = $conn->query("SELECT Code_Diplome, Nom_Diplome, Annee, Enseignant_idEnseignant FROM Diplome WHERE Code_Diplome='$codeDiplome'");
 
     if ($row = $result->fetch_assoc()) {
         /* on l'a récupéré. On met les valeurs dans des variables */
-        $codeGroupeModif = $row["Code_groupe"];
-        $effectifModif = $row["Effectif"];
+        $codeDiplomeModif = $row["Code_Diplome"];
+        $nomDiplomeModif = $row["Nom_Diplome"];
+        $anneeModif = $row["Annee"];
+        $idEnseignantModif = $row["Enseignant_idEnseignant"];
 
         /* et on note que c'est une modif */
         $isModif = true;
@@ -26,16 +23,6 @@ if (isset($_GET["Code_groupe"])) {
 
     /* on ferme le resultset */
     $result->close();
-
-		/* On va chercher les UEs du groupe */
-    $result = $conn->query("SELECT UE_Code_UE from Composition WHERE Gr_etudiants_Code_groupe='$codeGroupe'");
-
-    while ($row = $result->fetch_assoc()) {
-				/* on met chaque ue dans un array */
-        array_push($UEs, $row["UE_Code_UE"]);
-    }
-    $result->close();
-
 }
 ?>
 
@@ -56,14 +43,14 @@ if (isset($_GET["Code_groupe"])) {
             <?php
                 /* on met le titre en fonction de création ou modification */
                 if ($isModif == false) {
-                    echo "<h3>Ajouter un Groupe d'étudiants </h3>";
+                    echo "<h3>Ajouter un diplôme</h3>";
                 } else {
-                    echo "<h3>Modifier le groupe $codeGroupeModif </h3>";
+                    echo "<h3>Modifier le diplôme $nomDiplomeModif</h3>";
                 }
             ?>
 						<hr>
 
-						<form class="form-horizontal" action="ETU_traitement_aj.php" method="post">
+						<form class="form-horizontal" action="DIP_traitement_aj.php" method="post">
 							<!--<div class="row" id="formulaire">    ANNULE-->
 
               <?php
@@ -80,48 +67,45 @@ if (isset($_GET["Code_groupe"])) {
               <!-- Ici on est dans le HTML affiché si $isModif == true -->
               <!-- On met le champ CodeDiplome en caché, avec en value, la valeur de la variable
                    récupérée dans la requête au début de la page -->
-              <input type="hidden" name="Code_groupe" value="<?php echo $codeGroupe; ?>"/>
+              <input type="hidden" name="CodeDiplome" value="<?php echo $codeDiplomeModif; ?>"/>
 
               <!-- On met aussi un autre champ caché pour dire au php d'enregistrement qu'il
                    s'agit d'une modif -->
               <input type="hidden" name="action" value="modif"/>
 
               <?php
-                 } else {
+                      /* Fin du cas création. */
+                  }
+                  /* Le HTML qui suit sera toujours affiché car on n'est plus dans un bloc php conditionnel */
               ?>
 
-              <div class="row form-group eltForm">
-                <div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
-                  <label class="control-label">Code groupe : </label>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
-                  <!-- Dans les autres champs on met les valeurs qu'on a potentiellement récupérées
-                     dans le cas d'une modif. Dans le cas d'une création, elles seront vides. -->
-
-                  <input class="form-control" type="text" name="Code_groupe" value="<?php echo $codeGroupeModif; ?>"/>
-                  <input type="hidden" name="action" value="creation"/>
-                </div>
-              </div>
-              <?php
-                }
-              ?>
 								<!--Nom-->
 							<div class="row form-group eltForm">
 								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
-									<label class="control-label">Effectif : </label>
+									<label class="control-label">Nom diplôme : </label>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
                   <!-- Dans les autres champs on met les valeurs qu'on a potentiellement récupérées
                      dans le cas d'une modif. Dans le cas d'une création, elles seront vides. -->
 
-									<input class="form-control" type="number" name="Effectif" value="<?php echo $effectifModif; ?>"/>
+									<input class="form-control" type="text" name="NomDiplome" value="<?php echo $nomDiplomeModif; ?>"/>
 								</div>
 							</div>
 
-
-              <div class="row form-group eltForm">
+								<!--Année-->
+							<div class="row form-group eltForm">
 								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
-									<label class="control-label">UE suivies : </label>
+									<label class="control-label">Année : </label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
+									<input class="form-control" type="number" name="Annee" value="<?php echo $anneeModif; ?>"/>
+								</div>
+							</div>
+
+								<!--Responsable-->
+							<div class="row form-group eltForm">
+								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
+									<label class="control-label">Responsable : </label>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
                   <?php
@@ -133,7 +117,7 @@ if (isset($_GET["Code_groupe"])) {
                    * deux paramètres optionnels précédent avec leur valeur par défaut, "".
                    * La fonction afficheselect() évolue pour gérer ce cas.
                    */
-                  afficheselect($conn, "UE", "Code_UE[]", "Code_UE", "Code_UE", "", "", $UEs, true);
+                  afficheselect($conn, "Enseignant", "idEnseignant", "idEnseignant", "CONCAT (Nom,' ',Prenom)", "", "", $idEnseignantModif);
                    ?>
 								</div>
 							</div>

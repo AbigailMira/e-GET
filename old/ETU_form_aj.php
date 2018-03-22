@@ -3,22 +3,19 @@
 /* Par défaut c'est une création */
 $isModif = false;
 
-/* init des variables, pour la création */
-$codeGroupeModif="";
-$effectifModif="";
-$UEs = array();
-
 /* on regarde si on a un CodeDiplome en paramètre. Si oui, c'est pour une modif */
 if (isset($_GET["Code_groupe"])) {
     /* dans ce cas, on le récupère */
     $codeGroupe = $_GET["Code_groupe"];
 
     $result = $conn->query("SELECT Code_groupe, Effectif FROM Gr_etudiants WHERE Code_groupe='$codeGroupe'");
+    $result = $conn->query("SELECT UE_Code_UE FROM Composition WHERE GR_etudiant_Code_groupe='$codeGroupe'");
 
     if ($row = $result->fetch_assoc()) {
         /* on l'a récupéré. On met les valeurs dans des variables */
         $codeGroupeModif = $row["Code_groupe"];
         $effectifModif = $row["Effectif"];
+        $codeUEModif = $row["UE_Code_UE"];
 
         /* et on note que c'est une modif */
         $isModif = true;
@@ -26,16 +23,6 @@ if (isset($_GET["Code_groupe"])) {
 
     /* on ferme le resultset */
     $result->close();
-
-		/* On va chercher les UEs du groupe */
-    $result = $conn->query("SELECT UE_Code_UE from Composition WHERE Gr_etudiants_Code_groupe='$codeGroupe'");
-
-    while ($row = $result->fetch_assoc()) {
-				/* on met chaque ue dans un array */
-        array_push($UEs, $row["UE_Code_UE"]);
-    }
-    $result->close();
-
 }
 ?>
 
@@ -56,7 +43,7 @@ if (isset($_GET["Code_groupe"])) {
             <?php
                 /* on met le titre en fonction de création ou modification */
                 if ($isModif == false) {
-                    echo "<h3>Ajouter un Groupe d'étudiants </h3>";
+                    echo "<h3>Ajouter une Groupe d'étudiants </h3>";
                 } else {
                     echo "<h3>Modifier le groupe $codeGroupeModif </h3>";
                 }
@@ -87,7 +74,9 @@ if (isset($_GET["Code_groupe"])) {
               <input type="hidden" name="action" value="modif"/>
 
               <?php
-                 } else {
+                      /* Fin du cas création. */
+                  }
+                  /* Le HTML qui suit sera toujours affiché car on n'est plus dans un bloc php conditionnel */
               ?>
 
               <div class="row form-group eltForm">
@@ -99,12 +88,9 @@ if (isset($_GET["Code_groupe"])) {
                      dans le cas d'une modif. Dans le cas d'une création, elles seront vides. -->
 
                   <input class="form-control" type="text" name="Code_groupe" value="<?php echo $codeGroupeModif; ?>"/>
-                  <input type="hidden" name="action" value="creation"/>
                 </div>
               </div>
-              <?php
-                }
-              ?>
+
 								<!--Nom-->
 							<div class="row form-group eltForm">
 								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
@@ -121,7 +107,7 @@ if (isset($_GET["Code_groupe"])) {
 
               <div class="row form-group eltForm">
 								<div class = "col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-6  col-xs-6  eltG">
-									<label class="control-label">UE suivies : </label>
+									<label class="control-label">UE suivie : </label>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 eltR">
                   <?php
@@ -133,7 +119,7 @@ if (isset($_GET["Code_groupe"])) {
                    * deux paramètres optionnels précédent avec leur valeur par défaut, "".
                    * La fonction afficheselect() évolue pour gérer ce cas.
                    */
-                  afficheselect($conn, "UE", "Code_UE[]", "Code_UE", "Code_UE", "", "", $UEs, true);
+                  afficheselect($conn, "Composition", "UE_Code_UE", "UE_Code_UE", "UE_Code_UE", "", "", $codeDiplomeModif);
                    ?>
 								</div>
 							</div>
