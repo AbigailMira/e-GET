@@ -10,34 +10,47 @@ include("../Includes/eg_asidenav.php")
   <body>
     <div>
 <?php
+print_r($_POST);
+    $dateRentree = $_POST["dateRentree"];
 
-    $numSemCiv = $row["Num_Sem_civ"];
-    $numSemSco = $row["Num_Sem_sco"];
-    $annee = $row["Annee"];
-    $dateD = $row["DateD"];
-
-echo "<p>Vous avez saisi les informations suivante : <br>";
-    echo $numSemCiv."<br>";
-    echo $numSemSco."<br>";
-    echo $annee."<br>";
-    echo $dateD."<br>";
-echo "</p>";
-
-    /* Voyons si c'est une création ou une modif, et changeons la requête en fonction */
-    if ($_POST["action"] === "creation") {
-      /* creation : on insère */
-      $sql="insert into Semaine (Num_Sem_sco, Annee, DateD) values ('$numSemSco', '$annee', $dateD)";
-    } else {
-      /* modification: on update where CodeDiplome=$codediplome. */
-      $sql="update Semaine set Num_Sem_sco='$numSemSco', Annee='$annee', DateD=$dateD where Num_Sem_civ='$numSemCiv'";
+    /* On efface toutes les semaines */
+      $sql = "delete from Semaine";
+      if ($conn->query($sql) === true){
+        echo "Enregistrement réussi";
+      }
+      else {
+        echo "Erreur d'enregistrement".$conn->error;
     }
 
-    if ($conn->query($sql) === true){
-      echo "Enregistrement réussi";
+    /*On les réinsère pour l'année en cours */
+    
+    $annee = substr($dateRentree, 0, 4);
+    
+    /* On trouve le numéro de semaine civile pour la semaine de la rentrée, avec le format W (week) de DateTime */
+    $datetimeRentree = new DateTime($dateRentree);
+    $numSemCivRentree = $datetimeRentree->format("W") - 2;
+
+    for ($i = 1; $i < 52; $i++) {
+        /* numéro semaine scolaire */
+        $numSemSco = $i;
+        /* numéro semaine civile : c'est le numéro de semaine civile de rentrée
+         * plus le numéro de semaine scolaire en cours,
+         * modulo 52 (car en janvier on revient à 1),
+         * plus 1 car on compte de 1 dans le civil.
+         */
+        $numSemCiv = ($numSemCivRentree + $numSemSco) % 52 + 1;
+        
+        $sql = "insert into Semaine (Num_Sem_civ, Num_Sem_sco, Annee, DateD) 
+              values ($numSemCiv, $numSemSco, $annee, adddate('$dateRentree', ($numSemSco-1)*7))";
+              
+        if ($conn->query($sql) === true){
+          echo "Enregistrement réussi";
+        }
+        else {
+          echo "Erreur d'enregistrement".$conn->error;
+        }
     }
-    else {
-      echo "Erreur d'enregistrement".$conn->error;
-}
+    
   ?>
 
     <p><a href="CAL_form_aj.php">Retour</a>

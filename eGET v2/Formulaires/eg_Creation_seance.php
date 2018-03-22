@@ -69,10 +69,9 @@
 								<div class = "col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-6  col-xs-6  eltG">
 									<label>Module : </label>
 								</div>
-								<div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
-                  <?php
-                  afficheselect($conn, "Module", "idModule", "idModule", "Descriptif");
-                   ?>
+                <div id="div_select_UE" class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 eltR">
+                Sélectionnez une UE
+								</div>
 								</div>
 							</div>
 
