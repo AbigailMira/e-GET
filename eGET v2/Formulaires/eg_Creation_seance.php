@@ -12,6 +12,15 @@
     }
     </script>
 
+    <script type="text/javascript">
+    function update_Module() {
+      var code_UE=document.getElementById("Code_UE").value;
+      $.get("../Ajax/get_Module_for_UE.php?code_diplome="+code_ue, function(data, status){
+        document.getElementById("div_select_UE").innerHTML=data;
+      })
+    }
+    </script>
+
 		<div class="container-fluid">
 
 		<!-- Menu du haut -->
