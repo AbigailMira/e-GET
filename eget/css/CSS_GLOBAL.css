@@ -1,0 +1,239 @@
+/* Polices */
+@import url('https://fonts.googleapis.com/css?family=Mukta+Mahee');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+/*Login*/
+div#head1{
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 2%;
+	padding-top: 3%;
+	/*border-radius: 10px;*/
+	background: linear-gradient(to top, #A4A4A4 0%, #ffffff 100%);
+	
+}
+
+div#head1 h1{
+	display: inline-block;
+	vertical-align: middle;
+	font-family: 'Mukta Mahee', sans-serif;
+	font-size: 420%;
+}
+
+div#head1 img{
+	vertical-align: middle;
+}
+
+div#head2{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 0.4%;
+	padding-top: 0.1%;
+	background-color: #A4A4A4;
+	color: white;
+	border-bottom: 5px #54705F solid;
+}
+
+#milieu{
+	margin-top: 5%;
+	padding-left:5%;
+}
+
+#check{
+	margin-left: 25%;
+}
+
+.checkbox a{
+	color : #983535;
+}
+
+.checkbox a:hover{
+	color : #983535;
+	text-decoration: none;
+}
+
+button.btn.btn-warning{
+	margin-left: 63%;
+	background-color: #54705F;
+	border : 1px #54705F solid;
+}
+
+
+
+
+
+
+
+
+
+
+/* Bandeau identification */
+#header {
+	height: 70px;
+	background-color: #A4A4A4;
+	font-family: Arial;
+	border-bottom: 4px solid #54705F;
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+}
+#header h1 {
+	color: #983535;
+	margin: 0;
+	margin-top: 7px;
+	font-family: 'Mukta Mahee', sans-serif;
+	font-variant: small-caps;
+	letter-spacing: 0.2em;
+}
+
+
+/* Menu haut */
+#menu {
+	padding: 0;
+	z-index: 1;
+}
+
+nav.navbar.navbar-inverse{
+	background-color: #54705F;
+	/*color: white;*/
+	border: 1px #54705F solid;
+}
+
+ul.nav.nav-tabs{
+	background-color : #D8D8D8;
+}
+
+ul.nav.nav-tabs li a{
+	color: #54705F;
+}
+
+#SousMenu li a{
+	font-size: 120%;
+	color: white;
+	font-family: 'Mukta Mahee', sans-serif;
+}
+
+#part1 li a:hover{
+	background-color: #64AE82;
+	color: #fff;
+}
+#part1 li a:active{
+	background-color: #54705F;
+	color: #54705F;
+}
+#part1 li a:visited{
+	background-color: #64AE82;
+}
+#profil {
+	margin: 0;
+	width: 30%;
+	position: absolute;
+	right: 0;
+	padding: 0;
+	padding-right: 1.5%;
+	background-color : #D8D8D8;
+	/*height: 46px;*/
+	text-align: right;
+	z-index: 2;
+}
+#profil p {
+	margin-top: 2.5%;
+	font-size: 1em;
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(46, 46, 46, 0.5);
+}
+
+/* Section principale */
+#asideCont{
+	height: auto;
+	margin-top: 1%;
+	padding: 1.5%;
+	padding-left: 2%;
+	font-family: 'Montserrat', sans-serif;
+	line-height: 200%;
+	color: #A75355;
+	/*border: 2px red solid;*/
+}
+
+aside li a {
+	text-decoration: none;
+	color: #A75355;
+}
+
+section {
+	font-family: 'Montserrat', sans-serif;
+}
+
+#option {
+	list-style: none;
+}
+
+/*Diplômes*/
+
+
+
+
+/*Formulaires*/
+#mainCont {
+	height: auto;
+	background-color: #fff;
+	margin-top: 1%;
+	padding: 1.5%;
+	padding-left: 2%;
+	font-family: 'Montserrat', sans-serif;
+	line-height: 200%;
+	color: black;
+}
+
+form.form-inline.row{
+	margin-bottom: 3%;
+	margin-top: 3%;
+	padding-left: 8%;
+
+}
+
+div.table-responsive{
+	margin-bottom: 5%;
+}
+
+.eltForm{
+	margin-bottom: 2%;
+}
+
+.eltR{
+	width: 30%;
+	padding: 0;
+	margin-left: -5%;
+}
+
+.eltR1{
+	width: 30%;
+	padding: 0;
+}
+
+hr {
+	width: 85%;
+	margin-left: 0;
+}
+
+
+
+/* Pied de page */
+#footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background-color: #D8D8D8;
+	padding-top: 12px;
+	text-align: center;
+	color: #54705F;
+	border-top: 3px solid #54705F;
+	font-family: 'Mukta Mahee', sans-serif;
+}
+#footer a {
+	text-decoration: none;
+	color: #54705F;
+}
